@@ -1,0 +1,17 @@
+pom.xml
+*jar
+/lib/
+/classes/
+/target/
+.lein-*
+/resources/static/notificationserver.*.js
+/resources/static/js/ns.*.js
+/resources/static/js/ns.*.js.map
+.nrepl-*
+.idea
+*.iml
+log
+.vagrant
+*.pyc
+.DS_Store
+/deploy/roles/notificationserver/files/*.tx

@@ -1,0 +1,197 @@
+[
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/signature
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/many
+  :db/doc "Unique set of attributes which solely identify what happened"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/tags
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/many
+  :db/doc "Set of attributes providing additional information on what've happened"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/short-message
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Short (up to 140 chars) explanation"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/message
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Full-text description of what's happened"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/timestamp
+  :db/valueType :db.type/instant
+  :db/cardinality :db.cardinality/one
+  :db/doc "When we registered this notification"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :notifications/reverse-timestamp
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db/doc "(- (.getTime :notification/timestamp)) for log scanning"
+  :db.install/_attribute :db.part/db}
+
+ ;; User
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "A user's name"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/google-id
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "A user's Google Id"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/email
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "User's email for notifications"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/phone
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "User's phone for notifications"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/pushover
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "User's pushover key"
+  :db.install/_attribute :db.part/db}
+  
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/http
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "User's http url for notifications"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/schedules
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "User's schedules"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/filters
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "User's filters"
+  :db.install/_attribute :db.part/db}
+
+ ;; Filters
+ {:db/id #db/id[:db.part/db]
+  :db/ident :filter/value
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Filter value"
+  :db.install/_attribute :db.part/db}
+
+
+ ;; Tasks
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/connector
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/doc "Linked connector type"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/user
+  :db/valueType :db.type/ref
+  :db/doc "Linked user"
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/notification
+  :db/valueType :db.type/ref
+  :db/doc "Linked notification"
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/attempts
+  :db/valueType :db.type/long
+  :db/doc "Number of attempts"
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/last-at
+  :db/valueType :db.type/long
+  :db/doc "When we tried to deliver notification last time"
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/status
+  :db/valueType :db.type/keyword
+  :db/doc "Status of this task"
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+
+ ;; Schedules
+ [:db/add #db/id[:db.part/user] :db/ident :connector.type/phone]
+ [:db/add #db/id[:db.part/user] :db/ident :connector.type/email]
+ [:db/add #db/id[:db.part/user] :db/ident :connector.type/pushover]
+ [:db/add #db/id[:db.part/user] :db/ident :connector.type/http]
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :schedule/title
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Title for the schedule"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :schedule/tz
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Timezone"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :schedule/period
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "How often does this schedule occur"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :schedule/onoff
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Set of vectors #{[0 0] [0 1] [1 1]} meaning schedule is active 00:00-01:59 on Monday and 01:00-01:59 on Tuesday"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :schedule/connectors
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "What connector types are used when this schedule is active"
+  :db.install/_attribute :db.part/db}
+
+]

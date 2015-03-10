@@ -1,0 +1,26 @@
+{
+  :nomad/environments {
+    "production" {
+      :nomad/private-file #nomad/file "/etc/ns-server/config.edn"
+      :js "/js/ns.min.js"
+      :datomic {:uri "datomic:free://localhost:4334//notifications"}
+    }
+  }
+  :datomic {:uri "datomic:mem://notifications"}
+  :js "/js/ns.dev.js"
+  :notifier {
+    :email {
+      :from "Echo Notifications Server<USER@aboutecho.com>"
+      :user "USER@aboutecho.com"
+      :pass "SEKRET"
+      :port 587
+      :ssl :yes
+      :host "smtp.gmail.com"
+    }
+    :sms {
+      :login "**LOGIN**"
+      :password "**PASSWORD**"
+    }
+    :pushover {:token "**TOKEN**"}
+  }
+}

@@ -1,0 +1,120 @@
+html { background-color: #EEE; padding: 30px 40px; background-image: url('grid_@2X.png'); background-size: 310px 310px; }
+body {
+  font-family: "Lucida Grande", "Segoe UI", sans-serif;
+  font-size: 13px;
+  border-radius: 5px;
+  box-shadow: #BBB 0 0 5px;
+  color: hsl(228.00, 14.64%, 46.86%);
+}
+.navbar-nav>li>a {
+    padding-top: 17px;
+    padding-bottom: 16px;
+}
+
+.navbar { border-radius: 5px 5px 0 0;  }
+.navbar-default { background-color: hsl(175.76, 49.13%, 66.08%); border: none; }
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-text { color: white; }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus { color: #EEE; }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+  color: white;
+  background-color: hsl(174.35, 41.46%, 59.80%);
+}
+.content { min-height: 90%; }
+.footer { margin-top: 40px; border-radius: 0 0 5px 5px; background-color: #f5f5f5; padding: 20px 0 10px; color: #bbb; }
+.navbar .btn-link { border-bottom: 1px solid rgba(255,255,255,0.5); border-radius: 0; padding: 0; color: inherit; }
+.navbar .btn-link:hover { text-decoration: none; border-bottom-color: white; }
+
+.schedule-container .time-grid {
+  text-align: center;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.schedule-container th.today {
+  color: red;
+}
+
+.schedule-container .controls {
+  width: 200px;
+  margin: 80px 20px;
+}
+
+.schedule-container .time-grid.days-7 {
+  width: 458px;
+}
+
+.schedule-container .time-grid.days-14 {
+  width: 808px;
+}
+
+.schedule-container .time-grid tr td {
+  width:50px;
+  height: 30px;
+}
+
+.schedule-container .time-grid {
+   table-layout:fixed; 
+}
+
+.schedule-container .time-grid tr .time {
+  width: 106px;
+}
+
+.schedule-container .time-grid .toggler {
+  cursor: pointer;
+}
+
+div.schedule-container .time-grid .toggler.checked {
+  background-color: #ed9c28;
+}
+
+div.update-successful {
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+/* Login page */
+
+.login_page { width: 1000px; margin: 0 auto; }
+.login_page .container { width: 700px; }
+.login_page > .container { padding: 60px 0 20px; }
+.login_page__logo { width: 200px; height: 200px; margin: 0 40px 0 -20px; float: left; background-image: url(/images/logo.png); }
+.login_page h1 { margin: 0 0 30px 0; padding-top: 35px; }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  .login_page__logo { background-image: url(/images/logo@2x.png); background-size: 100% 100%; }    
+}
+
+/* Reflist */
+
+.reflist { list-style: none; padding: 0; }
+.refli { height: 40px; line-height: 40px; }
+.refli .glyphicon { color: #aaa; margin: 0 0.5em 0 -1.5em; cursor: pointer; }
+.refli .glyphicon-remove:hover { color: #b94a48; }
+.refli .flash { margin-left: 10px; background: url(b-marker.png); color: #333; padding: 0 0 0 5px; }
+.refli .flash:after { content: " "; background: url(b-marker.png) top right; position: relative; left: 3px; }
+.refli .title { font-size: 16px; }
+.refli .title.ref { border-bottom: 1px solid hsla(228.00, 14.64%, 46.86%,0.4); cursor: pointer; text-decoration: none; color: inherit;}
+.refli .title.ref:hover { color: #428BCA; border-color: #428BCA; }
+
+/*Filters*/
+
+.filters__filter_deleted { text-decoration: line-through; }
+.or { display: inline-block; padding: 6px 0 6px 16px; font-size: 14px; vertical-align: middle; }
+
+/*Schedules*/
+.schedules__schedule_deleted { text-decoration: line-through; }
+
+/*Notifications*/
+
+.tag { margin: 0 0.25em; display: block; }
+.badge_severity_info { color: #468847; }
+.badge_severity_warning { color: #c09853; }
+.badge_severity_critical { color: #b94a48; }
+.notification__message { white-space: pre-wrap; }
+.dropdown > .width { display: inline-block; padding: 0; width: auto; border: 1px solid red; box-shadow: none; color: transparent; background: transparent; position: absolute; top: -1000px;  }
